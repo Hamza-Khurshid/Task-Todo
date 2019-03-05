@@ -1,0 +1,82 @@
+@media (max-width: 575.98px) {
+  .btn {
+    width: 80%;
+  }
+}
+
+.App {
+  text-align: center;
+}
+
+.main-container {
+  background-image: url('./bgimage.png');
+  width: 100%;
+  height: 100%;
+  color: white;
+  padding-top: 60px;
+  padding-bottom: 72px; 
+}
+
+.logo {
+  margin-top: 10px;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 600;
+  margin-top: 40px;
+}
+
+.description {
+  font-size: 18px;
+  margin-bottom: 25px;
+  position: relative;
+  bottom: 35px;
+}
+
+.btn {
+  width: 290px;
+  border: none;
+  padding: 7px;
+  background-color: white;
+  border-radius: 30px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.btn:hover {
+  zoom: 1.1;
+  background-color: #F29EC8;
+  transition: 0.3s;
+}
+
+.btn-img-fb {
+  height: 25px;
+  width: 25px;
+  position: relative;
+  right: 22px;
+  top: 2px;
+}
+
+.btn-img-mail {
+  height: 25px;
+  width: 25px;
+  position: relative;
+  right: 34px;
+  top: 2px;
+}
+
+.mail-text {
+  font-weight: bold;
+  color: #FF3366;
+  position: relative;
+  right: 14px;
+  bottom: 5px;
+}
+
+.fb-text {
+  font-weight: bold;
+  color: #FF3366;
+  position: relative;
+  bottom: 5px;
+}

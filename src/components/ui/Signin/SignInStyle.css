@@ -1,0 +1,74 @@
+.mainContainer {
+  background-image: url('./bg-image.png');
+  width: 100%;
+  height: 100%;
+  color: white;
+  padding-top: 65px;
+  padding-bottom: 116px; 
+}
+
+.signicon {
+  margin-top: 40px;
+}
+
+.title-signin {
+  font-size: 30px;
+  font-weight: 430;
+  position: relative;
+  bottom: 35px;
+}
+
+.input {
+  border: none;
+  background-color: transparent;
+  border-bottom: 0.8px rgb(212, 197, 145) solid;
+  color: white;
+  zoom: 2;
+  position: relative;
+  bottom: 20px;
+}
+
+.input::placeholder { 
+  color: rgb(243, 243, 243);
+  font-size: 8px;
+  opacity: 1;
+}
+
+.pass-in {
+  margin-top: 10px;
+  background-image: url('./eye.png');
+  background-repeat: no-repeat;
+  background-position: right;
+  background-position-y: 5px;
+  background-position-x: 147px;
+  background-size: 10px 10px;
+}
+
+.inputBtns {
+  margin-top: 25px;
+  margin-bottom: -8px;
+  border: none;
+  border-radius: 50px;
+  font-size: 18px;
+}
+
+.signin {
+  background-color: white;
+  height: 50px;
+  width: 180px;
+  color: #FF3366;
+}
+
+.create {
+  margin-top: -8px;
+  border: 1px white solid; 
+  background-color: transparent;
+  height: 50px;
+  width: 200px;
+  color: white;
+}
+
+.inputBtns:hover {
+  zoom: 1.1;
+  transition: 0.3s;
+}

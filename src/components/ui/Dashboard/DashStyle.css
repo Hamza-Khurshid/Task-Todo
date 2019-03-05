@@ -1,0 +1,98 @@
+.component {
+    background-color: #FF3366;
+}
+
+.profile {
+    padding-bottom: 10px;
+    padding-top: 20px;
+    margin-left: 15px;
+}
+
+.p-image {
+    height: 100px;
+    width: 100px;
+    /* float: left; */
+    margin: 15px 0px;
+}
+@media (min-width: 992px) { 
+    .p-data {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: left;    
+    }
+ }
+
+@media (max-width: 767.98px) {
+    .side {
+        border-radius: 200px;
+        margin-bottom: 15px;
+    }
+
+    .addnew-text {
+        text-align: center;
+    }
+
+    .addnew-p {
+        text-align: center;
+    }
+}
+
+.p-data {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.fName {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.date {
+    font-size: 12px;
+}
+
+.side {
+    color: white;
+    text-align: left;
+    background-color: #FF3366;
+    border-bottom-right-radius: 200px; 
+}
+
+.addnew-text {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 100px;
+}
+
+.search-input {
+    width: 70%;
+    padding: 10px;
+    border: 1px black solid;
+    border-radius: 50px;
+    margin-bottom: 15px;
+}
+
+.link-form {
+    padding: 10px;
+    text-align: left;
+    background-color: #D2D0D0;
+    margin-bottom: 5px;
+}
+
+.link-form:hover {
+    border-radius: 25px; 
+}
+
+.pin-image {
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+}
+
+.link-text {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
