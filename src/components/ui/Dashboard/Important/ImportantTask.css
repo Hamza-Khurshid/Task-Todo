@@ -1,0 +1,41 @@
+.div-upper {
+    margin-top: 15px;
+}
+
+.border-div {
+    border: 1px black solid;
+    border-radius: 25px;
+    text-align: right;
+}
+
+.checkbox {
+    zoom: 2;
+    float: left;
+    border-radius: 50% !important;
+}
+
+.m-span-text {
+    margin-left: 15px;
+    font-size: 22px;
+    float: left;
+}
+
+.apply-done {
+    text-decoration: line-through;
+}
+
+.imp-star {
+    background-color: yellow;
+    align-content: right;
+    margin-right: 15px;
+    height: 30px;
+    width: 30px;
+}
+
+.count {
+    visibility: hidden;
+}
+
+.margin-class {
+    margin-bottom: 15px;
+}
