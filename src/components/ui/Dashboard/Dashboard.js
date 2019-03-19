@@ -12,6 +12,7 @@ import MyDay from "./MyDay/MyDay";
 import ComingTask from "./ComingTask/ComingTask";
 import ImportantTask from "./Important/ImportantTask";
 import {withRouter} from 'react-router-dom';
+import DoneTask from "./DoneTask/DoneTask";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -23,20 +24,20 @@ class Dashboard extends Component {
       date: this.getTodaysDate(),
       tasks: [ {
         id: '1',
-        isImp: true,
+        isImp: false,
         isDone: false,
         title: 'React assignment',
         desc: 'A todo app in react submit before 15-03-2019'
       }, {
         id: '2', 
-        isImp: false,
-        isDone: true,
+        isImp: true,
+        isDone: false,
         title: 'JavaScript assignment',
         desc: 'A todo app in react submit before 15-03-2019'
       }, {
         id: '3',
-        isImp: false,
-        isDone: true, 
+        isImp: true,
+        isDone: false, 
         title: 'Android assignment',
         desc: 'A todo app in react submit before 15-03-2019'
       }, {
@@ -195,7 +196,6 @@ class Dashboard extends Component {
                   <MyDay changeTitle={this.changeTitle} MyTasks={this.state.tasks} />
                   );
                 }} />
-                {/* <Route path="/important" component={ImportantTask} /> */}
 
                 <Route path="/important" render = {() =>{
                   return(
@@ -203,12 +203,15 @@ class Dashboard extends Component {
                   );
                 }} />
 
-                <Route path="/done" component={Done} />
-                {/* <Route path="/coming" component={ComingTask} /> */}
+                <Route path="/done" render={() => {
+                  return (
+                    <DoneTask changeTitle={this.changeTitle} />
+                  )
+                }} />
 
                 <Route path="/coming" render = {() =>{
                   return(
-                  <ComingTask changeTitle={this.changeTitle} MyTasks={this.state.tasks} />
+                  <ComingTask changeTitle={this.changeTitle} />
                   );
                 }} />
 
@@ -225,13 +228,5 @@ class Dashboard extends Component {
     );
   }
 }
-
-// const Important = () => {
-//   return <div>Important Tasks</div>;
-// };
-
-const Done = () => {
-  return <div>Done Tasks</div>;
-};
 
 export default withRouter(Dashboard);

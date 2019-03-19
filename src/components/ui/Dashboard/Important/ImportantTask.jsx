@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import "./ImportantTask.css";
 import STAR_IMG from "./star.png";
+import { connect } from 'react-redux';
 
-export default class ImportantTask extends Component {
+class ImportantTask extends Component {
 
     componentWillMount() {
         this.props.changeTitle('Important');
     }
 
     render() {
-        const tasks = this.props.MyTasks;
+        const tasks = this.props.todo;
         return (
             <div className='div-upper'>
               {tasks.map(task => {
@@ -32,3 +33,11 @@ export default class ImportantTask extends Component {
         )
     }
 }
+
+function mapStateToProps(store) {
+  return {
+    todo: store.tasks
+  }
+}
+
+export default connect(mapStateToProps)(ImportantTask);

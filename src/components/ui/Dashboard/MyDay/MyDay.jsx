@@ -1,16 +1,33 @@
 import React, {Component} from "react";
 import "./MyDay.css";
 import STAR_IMG from "./star.png";
+import { connect } from 'react-redux';
 
 class MyDay extends Component {
+  state = { 
+    todos: [],
+    isPressed: true
+   }
 
   componentWillMount() {
     this.props.changeTitle('My Day');
   }
 
+  checkHandler = event => {
+    event.preventDefault();
+    
+    const tat = event.target.checkb.value;
+    // const value = target.type === 'checkbox' ? target.checked : target.value;
+    // const name = target.name;
+
+    this.setState({
+      isPressed: tat
+    });
+
+  }
   render() {
     let count = 0, tcount=0;
-    const tasks = this.props.MyTasks;
+    const tasks = this.props.todo;
   return (
     <div className='div-upper'>
       {tasks.map(task => {
@@ -18,7 +35,9 @@ class MyDay extends Component {
             <div key={task.id}> 
               <div>  
                 <div className="border-div">
-                  { task.isDone ? <input type="checkbox" checked='checked' className="checkbox" /> : <input type="checkbox" className="checkbox" /> }
+                  <form>
+                    <input type="checkbox" onChange={this.checkHandler} name='checkb' value={this.state.isPressed} defaultChecked={task.isDone} className="checkbox" />
+                  </form>
                   { task.isDone ? <span className="span-text-done"> {task.title} </span> : <span className="span-text"> {task.title} </span> }
                   { task.isImp ? <img src={STAR_IMG} className="star imp" alt='Important' /> : <img src={STAR_IMG} className="star" alt='Important' /> }
                 </div>
@@ -33,4 +52,10 @@ class MyDay extends Component {
   }
 };
 
-export default MyDay;
+function mapStatetoProps(store) {
+  return {
+    todo: store.tasks
+  }
+}
+
+export default connect(mapStatetoProps, null)(MyDay);

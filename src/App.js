@@ -2,21 +2,22 @@ import React, { Component } from 'react';
 import './App.css';
 
 import { hot } from 'react-hot-loader';
-// import Home from './components/ui/Home/Home';
-// import SignIn from './components/ui/Signin/SignIn';
-// import SignUp from './components/ui/Signup/SignUp';
 import Dashboard from './components/ui/Dashboard/Dashboard';
 import {BrowserRouter} from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store/todoStore';
 
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <BrowserRouter>
-          <Dashboard />
-        </BrowserRouter>  
-      </div>
+      <Provider store= { store }>
+        <div className="App">
+          <BrowserRouter>
+            <Dashboard />
+          </BrowserRouter>  
+        </div>
+      </Provider>
     );
   }
 }

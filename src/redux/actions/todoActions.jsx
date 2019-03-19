@@ -2,23 +2,23 @@ export const AddTask = 'ADD_TASK';
 export const DeleteTask = 'DELETE_TASK';
 export const EditTask = 'EDIT_TASK';
 
-export function addTask() {
+export function addTask(data) {
     return {
         type: AddTask,
-        data: { title: '', desc: '' }
+        data
     }
 }
 
-export function deleteTask() {
+export function deleteTask(id) {
     return {
         type: DeleteTask,
-        data: ''
+        data: id
     }
 }
 
-export function editTask() {
+export function editTask(task) {
     return {
         type: EditTask,
-        data: ''
+        data: task
     }
 }

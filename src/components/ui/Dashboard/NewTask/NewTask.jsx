@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './NewTask.css';
+import { connect } from 'react-redux';
+import { addTask } from '../../../../redux/actions/todoActions';
 
-export default class NewTask extends Component {
+class NewTask extends Component {
     state = {
         title: '',
         desc: ''
@@ -19,8 +21,7 @@ export default class NewTask extends Component {
             title,
             desc
         }
-        console.log(todo);
-        this.props.AddTask(todo);
+        this.props.addTask(todo);
     }
 
     onChangeInput = name => event => {
@@ -44,3 +45,5 @@ export default class NewTask extends Component {
         )
     }
 };
+
+export default connect(null, { addTask })(NewTask);
