@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./ImportantTask.css";
 import STAR_IMG from "./star.png";
 import { connect } from 'react-redux';
+import Task from '../Task';
 
 class ImportantTask extends Component {
 
@@ -17,12 +18,8 @@ class ImportantTask extends Component {
                 return (
                     <div key={task.id} className='margin-class'>
                     { task.isImp ? 
-                      <div>  
-                        <div className="border-div">
-                          <input type="checkbox" className="checkbox" />
-                          <span className="m-span-text"> {task.title} </span>
-                          <img src={STAR_IMG} className="imp-star" alt='Important' />
-                        </div>
+                      <div>
+                        <Task task={task}/>
                       </div>
                       : <div className='count'></div> 
                     }

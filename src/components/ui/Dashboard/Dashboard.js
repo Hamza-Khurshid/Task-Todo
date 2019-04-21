@@ -13,6 +13,9 @@ import ComingTask from "./ComingTask/ComingTask";
 import ImportantTask from "./Important/ImportantTask";
 import {withRouter} from 'react-router-dom';
 import DoneTask from "./DoneTask/DoneTask";
+import { connect } from 'react-redux';
+import Task from "./Task";
+import EditTask from "./EditTask/EditTask";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -22,55 +25,17 @@ class Dashboard extends Component {
       search: '',
       title: 'My Day',
       date: this.getTodaysDate(),
-      tasks: [ {
-        id: '1',
-        isImp: false,
-        isDone: false,
-        title: 'React assignment',
-        desc: 'A todo app in react submit before 15-03-2019'
-      }, {
-        id: '2', 
-        isImp: true,
-        isDone: false,
-        title: 'JavaScript assignment',
-        desc: 'A todo app in react submit before 15-03-2019'
-      }, {
-        id: '3',
-        isImp: true,
-        isDone: false, 
-        title: 'Android assignment',
-        desc: 'A todo app in react submit before 15-03-2019'
-      }, {
-        id: '4', 
-        isImp: true,
-        isDone: false,
-        title: 'React assignment',
-        desc: 'A todo app in react submit before 15-03-2019'
-      }, {
-        id: '5', 
-        isImp: false,
-        isDone: false,
-        title: 'JavaScript assignment',
-        desc: 'A todo app in react submit before 15-03-2019'
-      }, {
-        id: '6', 
-        isImp: false,
-        isDone: false,
-        title: 'Android assignment',
-        desc: 'A todo app in react submit before 15-03-2019'
-      }, ]
+      tasks: this.props.todo
     }
   }
 
-  addTask = (task) => {
-    if( task != null ) {
-      this.setState( {
-        tasks: this.state.tasks.concat(task)
-      } )
-      alert('Task Added!');
-      this.props.history.push('/');
-    }
-  }
+  // addTask = (task) => {
+  //   if( task != null ) {
+      
+  //     alert('Task Added!');
+  //     this.props.history.push('/');
+  //   }
+  // }
 
   changeTitle = (title) => {
     if(title != null) {
@@ -193,13 +158,13 @@ class Dashboard extends Component {
             <Switch>
                 <Route exact path="/" render = {() =>{
                   return(
-                  <MyDay changeTitle={this.changeTitle} MyTasks={this.state.tasks} />
+                  <MyDay changeTitle={this.changeTitle} />
                   );
                 }} />
 
                 <Route path="/important" render = {() =>{
                   return(
-                  <ImportantTask changeTitle={this.changeTitle} MyTasks={this.state.tasks} />
+                  <ImportantTask changeTitle={this.changeTitle} />
                   );
                 }} />
 
@@ -217,10 +182,16 @@ class Dashboard extends Component {
 
                 <Route path="/newtask" render = {() =>{
                   return(
-                  <NewTask changeTitle={this.changeTitle} AddTask={this.addTask} />
+                  <NewTask changeTitle={this.changeTitle} />
                   );
                 }} />
-                <Route component={PageNotFound} />
+
+                <Route path="/editTask/:taskID" render={(props) => {
+                  return (
+                    <EditTask taskID={props.match.params.taskID} changeTitle={this.changeTitle} />
+                  );
+                }} />
+                <Route changeTitle={this.changeTitle} component={PageNotFound} />
             </Switch>
             </Col>
           </Row> 
@@ -229,4 +200,10 @@ class Dashboard extends Component {
   }
 }
 
-export default withRouter(Dashboard);
+function mapStateToProps(store) {
+  return {
+    todo: store.tasks
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(Dashboard));

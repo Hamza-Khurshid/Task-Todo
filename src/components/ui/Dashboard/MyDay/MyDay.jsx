@@ -1,52 +1,33 @@
 import React, {Component} from "react";
 import "./MyDay.css";
-import STAR_IMG from "./star.png";
 import { connect } from 'react-redux';
+import Task from "../Task";
 
 class MyDay extends Component {
-  state = { 
-    todos: [],
-    isPressed: true
-   }
 
   componentWillMount() {
     this.props.changeTitle('My Day');
   }
 
-  checkHandler = event => {
-    event.preventDefault();
-    
-    const tat = event.target.checkb.value;
-    // const value = target.type === 'checkbox' ? target.checked : target.value;
-    // const name = target.name;
-
-    this.setState({
-      isPressed: tat
-    });
-
-  }
   render() {
-    let count = 0, tcount=0;
     const tasks = this.props.todo;
   return (
     <div className='div-upper'>
-      {tasks.map(task => {
+      { tasks.length>0 ? tasks.map(task => {
         return (
             <div key={task.id}> 
               <div>  
-                <div className="border-div">
-                  <form>
-                    <input type="checkbox" onChange={this.checkHandler} name='checkb' value={this.state.isPressed} defaultChecked={task.isDone} className="checkbox" />
-                  </form>
-                  { task.isDone ? <span className="span-text-done"> {task.title} </span> : <span className="span-text"> {task.title} </span> }
-                  { task.isImp ? <img src={STAR_IMG} className="star imp" alt='Important' /> : <img src={STAR_IMG} className="star" alt='Important' /> }
+                <div>
+                  <Task task={task}/>
                 </div>
-                <div className='count'> {++tcount} </div> 
               </div> 
           </div>
         );
-      })}
-      {/* <div> { (((count > 0) & (tcount === 0)) | (count === 0) ) ? <div>No task remaining!</div> : <div></div>} </div> */}
+      }) : 
+      <h1 style={{color: '#FF3366'}}>
+        No task!
+      </h1>
+    }
     </div>
   );
   }

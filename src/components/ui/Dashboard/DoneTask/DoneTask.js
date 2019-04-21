@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import STAR_IMG from '../Important/star.png';
+import Task from '../Task';
 
 class DoneTask extends Component {
 
@@ -19,11 +19,7 @@ class DoneTask extends Component {
                     <div key={task.id} className='margin-class'>
                     { task.isDone ? 
                       <div>  
-                        <div className="border-div">
-                          <input type="checkbox" className="checkbox" />
-                          <span className="m-span-text"> {task.title} </span>
-                          <img src={STAR_IMG} className="imp-star" alt='Important' />
-                        </div>
+                        <Task task={task} />
                       </div>
                       : <div className='count'></div> 
                     }

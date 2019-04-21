@@ -5,7 +5,7 @@
 .border-div {
     border: 1px black solid;
     border-radius: 25px;
-    text-align: right;
+    /* text-align: right; */
 }
 
 .checkbox {
@@ -30,6 +30,8 @@
 .star {
     align-content: right;
     margin-right: 15px;
+    margin-top: 5px;
+    border-radius: 7px;
     height: 30px;
     width: 30px;
 }
@@ -40,4 +42,34 @@
 
 .count {
     visibility: hidden;
+}
+
+.delete {
+    align-content: right;
+    margin-right: 15px;
+    height: 30px;
+    width: 30px;
+}
+
+.expand-span {
+    padding: 5px;
+}
+
+.expand {
+    align-content: right;
+    margin-right: 15px;
+    height: 30px;
+    width: 30px;
+}
+
+.description-text { 
+    position: absolute;
+    bottom: -20px;
+}
+
+.edit-task {
+    align-content: right;
+    margin-right: 15px;
+    height: 30px;
+    width: 30px;
 }

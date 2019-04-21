@@ -1,33 +1,55 @@
 import React, { Component } from 'react';
-import './NewTask.css';
+import '../NewTask/NewTask.css';
 import { connect } from 'react-redux';
-import { addTask } from '../../../../redux/actions/todoActions';
+import { editTask } from '../../../../redux/actions/todoActions';
 import {withRouter} from 'react-router-dom';
 
-class NewTask extends Component {
+class EditTask extends Component {
+    task = {
+        id: '5', 
+        isImp: false,
+        isDone: false,
+        isExpanded: false,
+        title: 'JavaScript assignment',
+        desc: 'A todo app in react submit before 15-03-2019'
+    }
+
     state = {
+        task: {},
         title: '',
         desc: ''
     }
 
     componentWillMount() {
-        this.props.changeTitle('Add New Task');
+        this.props.changeTitle('Edit Task');
+        this.setState( {
+            title: this.task.title,
+            desc: this.task.desc,
+        } )
     }
 
     onFormSubmit = (e) => {
         e.preventDefault();
 
-        let id = Math.random();
+        let mTask = this.state.task;
+
+        let id = mTask.id;
         let title = e.target.elements.title.value;
         let desc = e.target.elements.desc.value;
+        let isDone = mTask.isDone;
+        let isImp = mTask.isImp;
+        let isExpanded = mTask.isExpanded;
 
         if(title !== '' & desc !== ''){
             let todo = {
                 id,
                 title,
-                desc
+                desc,
+                isDone,
+                isImp,
+                isExpanded
             }
-            this.props.addTask(todo);
+            this.props.editTask(todo);
             this.props.history.push('/');
         } else {
             alert('No empty field allowed!')
@@ -40,7 +62,16 @@ class NewTask extends Component {
         } )
       }
 
+      componentWillReceiveProps(nextProps) {
+          
+        let tasks = nextProps.tasks;
+        console.log(tasks.filter( task => task.id === nextProps.taskID ))
+        this.task = tasks.filter( task => task.id === nextProps.taskID );
+        this.setState ( { task: this.task[0], title: this.task[0].title, desc: this.task[0].desc } )
+      }
+
     render() {
+        
         return (
             <div className='my-task'>
                 <form onSubmit={this.onFormSubmit}>
@@ -56,4 +87,11 @@ class NewTask extends Component {
     }
 };
 
-export default withRouter(connect(null, { addTask })(NewTask));
+const getDataFromStore = (store) => {
+    let task = store.tasks;
+    // store.tasks.filter( task => task.id === this.props.taskID);
+    return {
+        tasks : task
+    }
+}
+export default withRouter(connect(getDataFromStore, { editTask })(EditTask));
